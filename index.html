@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Course Registration System</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172026;
+      --muted: #5b6871;
+      --line: #d9e2e8;
+      --surface: #ffffff;
+      --soft: #eef6f4;
+      --accent: #087f5b;
+      --accent-dark: #065f46;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #f7faf9;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #e9f7f3 0%, #f8fbfb 55%, #edf5fa 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 520px);
+      gap: 32px;
+      align-items: center;
+      padding: 56px 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin-bottom: 16px;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.05;
+    }
+
+    .lead {
+      max-width: 680px;
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: 1.12rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 10px 16px;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      color: #ffffff;
+      background: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .button.secondary {
+      color: var(--accent-dark);
+      background: transparent;
+    }
+
+    .preview {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 20px 50px rgba(23, 32, 38, 0.12);
+    }
+
+    main {
+      padding: 40px 0 56px;
+    }
+
+    section {
+      margin-top: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      min-height: 100%;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .card p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .code-box {
+      overflow-x: auto;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #101820;
+      color: #ecfdf5;
+    }
+
+    code {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.95rem;
+    }
+
+    .screenshots {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    figure {
+      margin: 0;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    figcaption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background: #ffffff;
+    }
+
+    @media (max-width: 820px) {
+      .intro,
+      .grid,
+      .screenshots {
+        grid-template-columns: 1fr;
+      }
+
+      .intro {
+        padding: 36px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap intro">
+      <div>
+        <h1>Student Course Registration System</h1>
+        <p class="lead">
+          A Python command-line application for managing students, courses, and course registrations.
+          It includes duplicate checks, capacity rules, JSON storage, tests, and screenshots.
+        </p>
+        <div class="actions">
+          <a class="button" href="https://github.com/brucemwendwa/Python-Module-Project-Exercise-Project-Title-Student-Course-Registration-System">View on GitHub</a>
+          <a class="button secondary" href="#run">Run Locally</a>
+        </div>
+      </div>
+      <img class="preview" src="screenshots/03_register_student.png" alt="Terminal screenshot showing a student registered to a course">
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section aria-labelledby="features-title">
+      <h2 id="features-title">Features</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Student Management</h3>
+          <p>Add, view, and search students by ID or name with simple validation for required details.</p>
+        </article>
+        <article class="card">
+          <h3>Course Management</h3>
+          <p>Add and view courses with trainer names, course IDs, and maximum registration capacity.</p>
+        </article>
+        <article class="card">
+          <h3>Registration Rules</h3>
+          <p>Prevent duplicate registrations, invalid student or course IDs, and registrations into full courses.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="run" aria-labelledby="run-title">
+      <h2 id="run-title">Run Locally</h2>
+      <p>This is a terminal Python project. Clone the repository and run it from your computer.</p>
+      <pre class="code-box"><code>git clone git@github.com:brucemwendwa/Python-Module-Project-Exercise-Project-Title-Student-Course-Registration-System.git
+cd Python-Module-Project-Exercise-Project-Title-Student-Course-Registration-System
+python3 main.py</code></pre>
+    </section>
+
+    <section aria-labelledby="test-title">
+      <h2 id="test-title">Tests</h2>
+      <p>The project includes unit tests for duplicate students, duplicate courses, duplicate registrations, full courses, and JSON loading.</p>
+      <pre class="code-box"><code>python3 -m unittest</code></pre>
+    </section>
+
+    <section aria-labelledby="screenshots-title">
+      <h2 id="screenshots-title">Screenshots</h2>
+      <div class="screenshots">
+        <figure>
+          <img src="screenshots/01_add_student.png" alt="Terminal screenshot showing the add student flow">
+          <figcaption>Add Student</figcaption>
+        </figure>
+        <figure>
+          <img src="screenshots/02_add_course.png" alt="Terminal screenshot showing the add course flow">
+          <figcaption>Add Course</figcaption>
+        </figure>
+        <figure>
+          <img src="screenshots/04_duplicate_registration.png" alt="Terminal screenshot showing duplicate registration prevention">
+          <figcaption>Duplicate Registration Check</figcaption>
+        </figure>
+        <figure>
+          <img src="screenshots/05_course_full.png" alt="Terminal screenshot showing full course prevention">
+          <figcaption>Course Full Check</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Student Course Registration System built with Python.
+    </div>
+  </footer>
+</body>
+</html>
