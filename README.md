@@ -9,9 +9,11 @@ The project starts with empty JSON data files. Students, courses, and registrati
 - GitHub repository link: <https://github.com/brucemwendwa/Python-Module-Project-Exercise-Project-Title-Student-Course-Registration-System>
 - Project type: Working Python command-line application
 - Main file: `main.py`
+- Subcommand CLI file: `cli.py`
 - README file: Included
 - Reflection file: `REFLECTION.md`
 - Screenshots: Included in the `screenshots/` folder
+- Dependencies: Managed with `Pipfile`
 
 ## What the Project Does
 
@@ -32,15 +34,37 @@ The application allows an admin to:
 
 ## How to Run the Project
 
-Clone the GitHub repository, open the project folder, then run:
+Clone the GitHub repository and install the dependencies:
 
 ```bash
 git clone https://github.com/brucemwendwa/Python-Module-Project-Exercise-Project-Title-Student-Course-Registration-System.git
 cd Python-Module-Project-Exercise-Project-Title-Student-Course-Registration-System
-python3 main.py
+pipenv install --dev
 ```
 
-If the project is already on your computer, open a terminal in this project folder and run:
+Run the original interactive menu:
+
+```bash
+pipenv run python main.py
+```
+
+Run the `argparse` command-line interface:
+
+```bash
+pipenv run python cli.py --help
+```
+
+Example CLI workflow:
+
+```bash
+pipenv run python cli.py add-student --student-id S001 --name "Mary Wanjiku" --email mary@example.com --phone 0711111111
+pipenv run python cli.py add-course --course-id PY101 --name "Python Fundamentals" --trainer "Mr. Joseph" --capacity 2
+pipenv run python cli.py register --student-id S001 --course-id PY101
+pipenv run python cli.py list-students
+pipenv run python cli.py list-courses
+```
+
+If the project is already on your computer and you do not want to use Pipenv, the interactive menu can still run with:
 
 ```bash
 python3 main.py
@@ -48,10 +72,18 @@ python3 main.py
 
 Use the menu numbers to choose an action. Data is saved in the `data/` folder.
 
+The CLI uses `rich`, so install dependencies first when running `cli.py`.
+
 To run the tests:
 
 ```bash
 python3 -m unittest
+```
+
+If you installed with Pipenv, tests can also be run with:
+
+```bash
+pipenv run python -m unittest
 ```
 
 ## Menu Options
@@ -73,6 +105,8 @@ python3 -m unittest
 ## Features Implemented
 
 - Menu-driven command-line interface
+- `argparse` subcommand CLI with help messages
+- Rich table output for clearer terminal display
 - Student validation for ID, name, email, and phone number
 - Course validation for ID, course name, trainer name, and capacity
 - Duplicate student and duplicate course prevention
@@ -83,8 +117,9 @@ python3 -m unittest
 - View all students in a course
 - View all courses registered by a student
 - JSON file saving and loading
+- External dependencies managed in `Pipfile`
 - Error handling so invalid menu input or wrong data does not crash the app
-- Unit tests for the main registration rules
+- Unit tests for the main registration rules and CLI commands
 - Five terminal screenshots in the `screenshots/` folder
 
 ## Classes Used
@@ -99,7 +134,9 @@ python3 -m unittest
 
 ```text
 .
+├── cli.py
 ├── main.py
+├── Pipfile
 ├── models/
 │   ├── person.py
 │   ├── student.py
@@ -107,11 +144,14 @@ python3 -m unittest
 │   └── registration.py
 ├── services/
 │   └── school_system.py
+├── utils/
+│   └── console_output.py
 ├── data/
 │   ├── students.json
 │   ├── courses.json
 │   └── registrations.json
 ├── tests/
+│   ├── test_cli.py
 │   └── test_school_system.py
 ├── screenshots/
 │   ├── 01_add_student.png
@@ -150,6 +190,8 @@ python3 -m unittest
 The most challenging part was keeping the registration rules consistent with saved data. The system needs to block duplicate registrations, check course capacity, and ignore invalid records when loading JSON files.
 
 Another challenge was separating the project into clean files while keeping the command-line menu easy to follow. The final structure keeps models in `models/`, main logic in `services/`, and the user interface in `main.py`.
+
+After reviewing the CLI rubric, I also added a separate `argparse` interface in `cli.py`. This was useful because the project now supports both an interactive menu and direct terminal subcommands while reusing the same `SchoolSystem` logic.
 
 ## Notes
 
