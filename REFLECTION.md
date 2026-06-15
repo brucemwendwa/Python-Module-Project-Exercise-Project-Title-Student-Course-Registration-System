@@ -1,5 +1,9 @@
 # Project Reflection
 
+## Project Summary
+
+This project is a terminal-based Student Course Registration System. It allows an admin to add students, add courses, register students for courses, search records, view registration lists, and save or load data using JSON files.
+
 ## What was the hardest part of this project?
 
 The hardest part was the registration logic. The system needed to check several things before adding a registration: whether the student exists, whether the course exists, whether the student is already registered, and whether the course still has space.
@@ -16,6 +20,10 @@ I created `Registration` to represent the link between one student and one cours
 
 I created `SchoolSystem` to manage the main logic, including adding records, searching, registering students, saving data, and loading data.
 
+## How did you use object-oriented programming?
+
+I used separate classes so that each part of the system has a clear responsibility. `Student`, `Course`, and `Registration` store project data, while `SchoolSystem` controls the main actions. I also used inheritance by making `Student` inherit shared contact fields from the `Person` class.
+
 ## How does your registration logic prevent duplicate registrations?
 
 Before adding a new registration, the `SchoolSystem.register_student()` method calls `is_registered()`. That method loops through the existing registrations and checks whether the same student ID and course ID already exist together. If they do, the system raises an error and does not add another registration.
@@ -31,6 +39,10 @@ One bug was handling invalid course capacity input. If the user typed text inste
 Another issue was loading saved JSON data safely. A saved registration could point to a missing student or course. I fixed this by checking records during loading and skipping invalid or duplicate records.
 
 I also had to adjust the screenshot helper because normal subprocess input did not show typed values in the captured terminal output. I fixed that by using a pseudo-terminal so the screenshots look like real terminal sessions.
+
+## What did you learn?
+
+This project helped me practice classes, inheritance, validation, dictionaries, lists, loops, functions, modules, error handling, and file handling. I also learned how useful it is to separate user interface code from business logic, because it made the `SchoolSystem` class easier to test.
 
 ## Which part of the code would you improve if you had more time?
 
