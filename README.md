@@ -4,6 +4,15 @@ A terminal-based Python application for a small training school. The system help
 
 The project starts with empty JSON data files. Students, courses, and registrations are entered through the application and saved to files, so the app does not hard-code student or course data.
 
+## Submission Details
+
+- GitHub repository link: <https://github.com/brucemwendwa/Python-Module-Project-Exercise-Project-Title-Student-Course-Registration-System>
+- Project type: Working Python command-line application
+- Main file: `main.py`
+- README file: Included
+- Reflection file: `REFLECTION.md`
+- Screenshots: Included in the `screenshots/` folder
+
 ## What the Project Does
 
 The application allows an admin to:
@@ -23,7 +32,15 @@ The application allows an admin to:
 
 ## How to Run the Project
 
-Open a terminal in this project folder, then run:
+Clone the GitHub repository, open the project folder, then run:
+
+```bash
+git clone https://github.com/brucemwendwa/Python-Module-Project-Exercise-Project-Title-Student-Course-Registration-System.git
+cd Python-Module-Project-Exercise-Project-Title-Student-Course-Registration-System
+python3 main.py
+```
+
+If the project is already on your computer, open a terminal in this project folder and run:
 
 ```bash
 python3 main.py
@@ -55,12 +72,16 @@ python3 -m unittest
 
 ## Features Implemented
 
+- Menu-driven command-line interface
 - Student validation for ID, name, email, and phone number
 - Course validation for ID, course name, trainer name, and capacity
 - Duplicate student and duplicate course prevention
 - Registration logic that checks whether the student and course exist
 - Duplicate registration prevention
 - Course capacity checking before registration
+- Search students by ID or name
+- View all students in a course
+- View all courses registered by a student
 - JSON file saving and loading
 - Error handling so invalid menu input or wrong data does not crash the app
 - Unit tests for the main registration rules
